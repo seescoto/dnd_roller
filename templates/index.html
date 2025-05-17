@@ -9,7 +9,146 @@
 			href="{{ url_for('static', filename='styles.css') }}"
 		/>
 	</head>
-	<body></body>
+	<body>
+		<form action="/set-stats" method="post">
+			<h1>Set Your Stats!</h1>
+			<label for="strength">Strength score:</label>
+			<input type="number" id="strength" min="1" max="30" value="10" /><br />
+
+			<label for="dexterity">Dexterity score:</label>
+			<input
+				type="number"
+				id="dexterity"
+				min="1"
+				max="30"
+				value="10"
+			/><br />
+
+			<label for="constitution">Constitution score:</label>
+			<input
+				type="number"
+				id="constitution"
+				min="1"
+				max="30"
+				value="10"
+			/><br />
+
+			<label for="intelligence">Intelligence score:</label>
+			<input
+				type="number"
+				id="intelligence"
+				min="1"
+				max="30"
+				value="10"
+			/><br />
+
+			<label for="wisdom">Wisdom score:</label>
+			<input type="number" id="wisdom" min="1" max="30" value="10" /><br />
+
+			<label for="charisma">Charisma score:</label>
+			<input type="number" id="charisma" min="1" max="30" value="10" /><br />
+
+			<br />
+			<label for="proficiency_bonus">Proficiency bonus:</label>
+			<input
+				type="number"
+				id="proficiency_bonus"
+				min="2"
+				max="6"
+				value="2"
+			/><br />
+
+			<label for="initiative_bonus">Initivative bonus:</label>
+			<input
+				type="number"
+				id="initiative_bonus"
+				min="-10"
+				max="30"
+				value="0"
+			/><br />
+
+			<h2>What are you proficient in?</h2>
+
+			<div class="column2">
+				<input type="checkbox" id="acrobatics" />
+				<label for="acrobatics">Acrobatics</label>
+				<br />
+				<input type="checkbox" id="animal_handling" />
+				<label for="animal_handling">Animal Handling</label>
+				<br />
+				<input type="checkbox" id="arcana" />
+				<label for="arcana">Arcana</label>
+				<br />
+				<input type="checkbox" id="athletics" />
+				<label for="athletics">Athletics</label>
+				<br />
+				<input type="checkbox" id="deception" />
+				<label for="deception">Deception</label>
+				<br />
+				<input type="checkbox" id="history" />
+				<label for="history">History</label>
+				<br />
+				<input type="checkbox" id="insight" />
+				<label for="insight">Insight</label>
+				<br />
+				<input type="checkbox" id="intimidation" />
+				<label for="intimidation">Intimidation</label>
+				<br />
+				<input type="checkbox" id="investigation" />
+				<label for="investigation">Investigation</label>
+				<br />
+				<input type="checkbox" id="medicine" />
+				<label for="medicine">Medicine</label>
+				<br />
+				<input type="checkbox" id="nature" />
+				<label for="nature">Nature</label>
+				<br />
+				<input type="checkbox" id="perception" />
+				<label for="perception">Perception</label>
+				<br />
+				<input type="checkbox" id="performance" />
+				<label for="performance">Performance</label>
+				<br />
+				<input type="checkbox" id="persuasion" />
+				<label for="persuasion">Persuasion</label>
+				<br />
+				<input type="checkbox" id="religion" />
+				<label for="religion">Religion</label>
+				<br />
+				<input type="checkbox" id="sleight_of_hand" />
+				<label for="sleight_of_hand">Sleight of Hand</label>
+				<br />
+				<input type="checkbox" id="stealth" />
+				<label for="stealth">Stealth</label>
+				<br />
+				<input type="checkbox" id="survival" />
+				<label for="survival">Survival</label>
+				<br />
+			</div>
+			<div class="column2">
+				<input type="checkbox" id="strength_prof" />
+				<label for="strength_prof">Strength</label>
+				<br />
+				<input type="checkbox" id="dexterity_prof" />
+				<label for="dexterity_prof">Dexterity</label>
+				<br />
+				<input type="checkbox" id="constitution_prof" />
+				<label for="constitution_prof">Constitution</label>
+				<br />
+				<input type="checkbox" id="intelligence_prof" />
+				<label for="intelligence_prof">Intelligence</label>
+				<br />
+				<input type="checkbox" id="wisdom_prof" />
+				<label for="wisdom_prof">Wisdom</label>
+				<br />
+				<input type="checkbox" id="charisma_prof" />
+				<label for="charisma_prof">Charisma</label>
+				<br />
+			</div>
+
+			<input type="submit" value="Submit" />
+		</form>
+	</body>
 	<footer>
 		<p>&copy; Sofia Escoto 2025</p>
 	</footer>

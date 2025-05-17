@@ -1,11 +1,18 @@
 import random
-import math
 
 
-def roll_custom(roll: str):
+def roll_custom(roll: str) -> int:
+    """given a custom roll (ex. 1d10 +3, 2d20, d4) rolls the dice and adds any modifiers.
+    string should be in the format [X]dY[+Z][-Z] where X,Y,Z are numbers and [] represents
+    an optional addition to the string.
+    e.g. "1d10 +3-4" "2d20-3" "d4"
 
-    # roll string in the format NUMdNUM +/- NUM
-    # ex "1d10+3" or "d20 - 4" or "1d8"
+    Args:
+        roll (str): custom roll.
+
+    Returns:
+        int: result of dice roll plus or minus modifiers.
+    """
 
     # pre-formatting
     roll = roll.lower()
@@ -14,7 +21,7 @@ def roll_custom(roll: str):
     if roll[0] == "d":
         roll = "1" + roll
 
-    # split into roll (xdx) and modifiers (+x-y)
+    # split into roll (XdY) and modifiers (+Z-Z)
     strings = split_by_multiple(roll, ['-', '+'])
     mods = compute_modifiers(strings[1])
 
@@ -47,7 +54,8 @@ def split_by_multiple(string: str, deliminators: list[chr]) -> tuple[str]:
     return (string, None)
 
 
-def compute_modifiers(modifier_string: str):
+def compute_modifiers(modifier_string: str) -> int:
+
     if modifier_string == None:
         return 0
     modifier_string = "0" + modifier_string
@@ -55,5 +63,21 @@ def compute_modifiers(modifier_string: str):
     return eq
 
 
-print(roll_custom("1d1"))
-# print(compute_modifiers("+2+4+5"))
+def roll_d4() -> int:
+    return random.randint(1, 4)
+
+
+def roll_d6() -> int:
+    return random.randint(1, 6)
+
+
+def roll_d8() -> int:
+    return random.randint(1, 8)
+
+
+def roll_d12() -> int:
+    return random.randint(1, 12)
+
+
+def roll_d20() -> int:
+    return random.randint(1, 20)
