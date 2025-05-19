@@ -13,12 +13,20 @@
 		<form action="/set-stats" method="post">
 			<h1>Set Your Stats!</h1>
 			<label for="strength">Strength score:</label>
-			<input type="number" id="strength" min="1" max="30" value="10" /><br />
+			<input
+				type="number"
+				id="strength"
+				name="strength"
+				min="1"
+				max="30"
+				value="10"
+			/><br />
 
 			<label for="dexterity">Dexterity score:</label>
 			<input
 				type="number"
 				id="dexterity"
+				name="dexterity"
 				min="1"
 				max="30"
 				value="10"
@@ -28,6 +36,7 @@
 			<input
 				type="number"
 				id="constitution"
+				name="constitution"
 				min="1"
 				max="30"
 				value="10"
@@ -37,22 +46,38 @@
 			<input
 				type="number"
 				id="intelligence"
+				name="intelligence"
 				min="1"
 				max="30"
 				value="10"
 			/><br />
 
 			<label for="wisdom">Wisdom score:</label>
-			<input type="number" id="wisdom" min="1" max="30" value="10" /><br />
+			<input
+				type="number"
+				id="wisdom"
+				name="wisdom"
+				min="1"
+				max="30"
+				value="10"
+			/><br />
 
 			<label for="charisma">Charisma score:</label>
-			<input type="number" id="charisma" min="1" max="30" value="10" /><br />
+			<input
+				type="number"
+				id="charisma"
+				name="charisma"
+				min="1"
+				max="30"
+				value="10"
+			/><br />
 
 			<br />
 			<label for="proficiency_bonus">Proficiency bonus:</label>
 			<input
 				type="number"
 				id="proficiency_bonus"
+				name="proficiency_bonus"
 				min="2"
 				max="6"
 				value="2"
@@ -62,86 +87,104 @@
 			<input
 				type="number"
 				id="initiative_bonus"
+				name="initiative_bonus"
 				min="-10"
 				max="30"
-				value="0"
+				value="1"
 			/><br />
 
 			<h2>What are you proficient in?</h2>
 
 			<div class="column2">
-				<input type="checkbox" id="acrobatics" />
+				<input type="checkbox" id="acrobatics" name="acrobatics" />
 				<label for="acrobatics">Acrobatics</label>
 				<br />
-				<input type="checkbox" id="animal_handling" />
+				<input
+					type="checkbox"
+					id="animal_handling"
+					name="animal_handling"
+				/>
 				<label for="animal_handling">Animal Handling</label>
 				<br />
-				<input type="checkbox" id="arcana" />
+				<input type="checkbox" id="arcana" name="arcana" />
 				<label for="arcana">Arcana</label>
 				<br />
-				<input type="checkbox" id="athletics" />
+				<input type="checkbox" id="athletics" name="athletics" />
 				<label for="athletics">Athletics</label>
 				<br />
-				<input type="checkbox" id="deception" />
+				<input type="checkbox" id="deception" name="deception" />
 				<label for="deception">Deception</label>
 				<br />
-				<input type="checkbox" id="history" />
+				<input type="checkbox" id="history" name="history" />
 				<label for="history">History</label>
 				<br />
-				<input type="checkbox" id="insight" />
+				<input type="checkbox" id="insight" name="insight" />
 				<label for="insight">Insight</label>
 				<br />
-				<input type="checkbox" id="intimidation" />
+				<input type="checkbox" id="intimidation" name="intimidation" />
 				<label for="intimidation">Intimidation</label>
 				<br />
-				<input type="checkbox" id="investigation" />
+				<input type="checkbox" id="investigation" name="investigation" />
 				<label for="investigation">Investigation</label>
 				<br />
-				<input type="checkbox" id="medicine" />
+				<input type="checkbox" id="medicine" name="medicine" />
 				<label for="medicine">Medicine</label>
 				<br />
-				<input type="checkbox" id="nature" />
+				<input type="checkbox" id="nature" name="nature" />
 				<label for="nature">Nature</label>
 				<br />
-				<input type="checkbox" id="perception" />
+				<input type="checkbox" id="perception" name="perception" />
 				<label for="perception">Perception</label>
 				<br />
-				<input type="checkbox" id="performance" />
+				<input type="checkbox" id="performance" name="performance" />
 				<label for="performance">Performance</label>
 				<br />
-				<input type="checkbox" id="persuasion" />
+				<input type="checkbox" id="persuasion" name="persuasion" />
 				<label for="persuasion">Persuasion</label>
 				<br />
-				<input type="checkbox" id="religion" />
+				<input type="checkbox" id="religion" name="religion" />
 				<label for="religion">Religion</label>
 				<br />
-				<input type="checkbox" id="sleight_of_hand" />
+				<input
+					type="checkbox"
+					id="sleight_of_hand"
+					name="sleight_of_hand"
+				/>
 				<label for="sleight_of_hand">Sleight of Hand</label>
 				<br />
-				<input type="checkbox" id="stealth" />
+				<input type="checkbox" id="stealth" name="stealth" />
 				<label for="stealth">Stealth</label>
 				<br />
-				<input type="checkbox" id="survival" />
+				<input type="checkbox" id="survival" name="survival" />
 				<label for="survival">Survival</label>
 				<br />
 			</div>
+
 			<div class="column2">
-				<input type="checkbox" id="strength_prof" />
+				<input type="checkbox" id="strength_prof" name="strength_prof" />
 				<label for="strength_prof">Strength</label>
 				<br />
-				<input type="checkbox" id="dexterity_prof" />
+				<input type="checkbox" id="dexterity_prof" name="dexterity_prof" />
 				<label for="dexterity_prof">Dexterity</label>
 				<br />
-				<input type="checkbox" id="constitution_prof" />
+				<input
+					type="checkbox"
+					id="constitution_prof"
+					name="constitution_prof"
+				/>
 				<label for="constitution_prof">Constitution</label>
 				<br />
-				<input type="checkbox" id="intelligence_prof" />
+				<input
+					type="checkbox"
+					id="intelligence_prof"
+					name="intelligence_prof"
+				/>
 				<label for="intelligence_prof">Intelligence</label>
 				<br />
-				<input type="checkbox" id="wisdom_prof" />
+				<input type="checkbox" id="wisdom_prof" name="wisdom_prof" />
 				<label for="wisdom_prof">Wisdom</label>
 				<br />
-				<input type="checkbox" id="charisma_prof" />
+				<input type="checkbox" id="charisma_prof" name="charisma_prof" />
 				<label for="charisma_prof">Charisma</label>
 				<br />
 			</div>

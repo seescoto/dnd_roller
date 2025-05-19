@@ -21,7 +21,7 @@ def roll_custom(roll: str) -> int:
     if roll[0] == "d":
         roll = "1" + roll
 
-    # split into roll (XdY) and modifiers (+Z-Z)
+    # split into roll (XdY) and modifiers (+Z or -Z)
     strings = split_by_multiple(roll, ['-', '+'])
     mods = compute_modifiers(strings[1])
 
