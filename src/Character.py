@@ -1,14 +1,5 @@
-class CharAttribute:
-
-    score: int
-    modifier: int
-
-    def __init__(self, score: int) -> None:
-        self.set_score(score)
-
-    def set_score(self, score: int) -> None:
-        self.score = score
-        self.modifier = (self.score - 10)//2
+from src.CharAttribute import CharAttribute
+from src.Rolls import roll_d20
 
 
 class Character:
@@ -81,3 +72,30 @@ class Character:
 
     def add_proficiency(self, skill: str) -> None:
         self.proficiencies.append(skill)
+
+    def roll_skill(self, skill: str) -> tuple[int]:
+        str_skills = ['Athletics']
+        dex_skills = ['Acrobatics', 'Sleight of Hand', 'Stealth']
+        int_skills = ['Arcana', 'History',
+                      'Investigation', 'Nature', 'Religion']
+        wis_skills = ['Animal Handling', 'Insight',
+                      'Medicine', 'Perception', 'Survival']
+        cha_skills = ['Deception', 'Intimidation', 'Performance', 'Persuasion']
+
+        bonus = 0
+        if skill in str_skills:
+            bonus = self.strength.modifier
+        elif skill in dex_skills:
+            bonus = self.dexterity.modifier
+        elif skill in int_skills:
+            bonus = self.intelligence.modifier
+        elif skill in wis_skills:
+            bonus = self.wisdom.modifier
+        elif skill in cha_skills:
+            bonus = self.charisma.modifier
+
+        if skill in self.proficiencies:
+            bonus += self.proficiency_bonus
+
+        roll = roll_d20
+        return (roll, roll+bonus)

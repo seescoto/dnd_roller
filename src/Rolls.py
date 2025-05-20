@@ -1,7 +1,7 @@
 import random
 
 
-def roll_custom(roll: str) -> int:
+def roll_custom(roll: str) -> tuple[int]:
     """given a custom roll (ex. 1d10 +3, 2d20, d4) rolls the dice and adds any modifiers.
     string should be in the format [X]dY[+Z][-Z] where X,Y,Z are numbers and [] represents
     an optional addition to the string.
@@ -31,7 +31,7 @@ def roll_custom(roll: str) -> int:
     for _ in range(int(roll[0])):
         dice += random.randint(1, int(roll[1]))
 
-    return dice + mods
+    return (dice, dice+mods)
 
 
 def split_by_multiple(string: str, deliminators: list[chr]) -> tuple[str]:

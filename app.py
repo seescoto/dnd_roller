@@ -54,7 +54,18 @@ def set_stats():
 
     new_char.set_proficiencies(profs)
 
-    return render_template('set_stats.html', character=new_char)
+    all_skills = ['Acrobatics', 'Animal Handling', 'Arcana', 'Athletics',
+                  'Deception', 'History', 'Insight', 'Intimidation',
+                  'Investigation', 'Medicine', 'Nature', 'Perception',
+                  'Performance', 'Persuasion', 'Religion', 'Sleight of Hand',
+                  'Stealth', 'Survival',
+                  'Strength', 'Dexterity', 'Constitution', 'Intelligence',
+                  'Wisdom', 'Charisma']
+
+    saving_throws = ['Strength', 'Dexterity',
+                     'Constitution', 'Intelligence', 'Wisdom', 'Charisma']
+
+    return render_template('set_stats.html', character=new_char, skills=all_skills, saving_throws=saving_throws)
 
 
 if __name__ == '__main__':

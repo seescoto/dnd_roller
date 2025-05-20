@@ -11,22 +11,63 @@
 	</head>
 
 	<h1>Stats:</h1>
-
-	<p>Strength: {{character.strength.score}}</p>
-	<p>Dexterity: {{character.dexterity.score}}</p>
-	<p>Constitution: {{character.constitution.score}}</p>
-	<p>Intelligence: {{character.intelligence.score}}</p>
-	<p>Wisdom: {{character.wisdom.score}}</p>
-	<p>Charisma: {{character.charisma.score}}</p>
-
+	<ul>
+		<li>
+			Strength: {{character.strength.score}}
+			<button class="button">Roll strength</button>
+		</li>
+		<li>
+			Dexterity: {{character.dexterity.score}}
+			<button class="button">Roll dexterity</button>
+		</li>
+		<li>
+			Constitution: {{character.constitution.score}}
+			<button class="button">Roll constitution</button>
+		</li>
+		<li>
+			Intelligence: {{character.intelligence.score}}
+			<button class="button">Roll intelligence</button>
+		</li>
+		<li>
+			Wisdom: {{character.wisdom.score}}
+			<button class="button">Roll wisdom</button>
+		</li>
+		<li>
+			Charisma: {{character.charisma.score}}
+			<button class="button">Roll charisma</button>
+		</li>
+		<li>
+			Initiative bonus: {{character.initiative_bonus}}
+			<button class="button">Roll initiative</button>
+		</li>
+		<li>Proficiency bonus: {{character.proficiency_bonus}}</li>
+	</ul>
 	<br />
 
-	<p>Proficiency bonus: {{character.proficiency_bonus}}</p>
-	<p>Initiative bonus: {{character.initiative_bonus}}</p>
-
-	<br />
-
-	<p>Proficiencies:</p>
+	<div class="column2">
+		<p>Skills:</p>
+		<ul>
+			{% for skill in skills %}
+			<li>
+				{{skill}} {% if skill in character.proficiencies %} &check;
+				{%endif%}
+				<button class="button">Roll {{skill}}</button>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="column2">
+		<p>Saving throws:</p>
+		<ul>
+			{% for saving_throw in saving_throws %}
+			<li>
+				{{saving_throw}} {%if saving_throw in character.proficiencies%}
+				&check; {%endif%}
+				<button class="button">Roll {{saving_throw}} saving throw</button>
+			</li>
+			{%endfor%}
+		</ul>
+	</div>
 
 	<footer>
 		<p>&copy; Sofia Escoto 2025</p>
