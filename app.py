@@ -1,5 +1,4 @@
-from flask import Flask, redirect, request, render_template, jsonify, session
-import json
+from flask import Flask, request, render_template, session
 from src.Character import Character, character_to_dict, dict_to_character
 from config import secret_key
 
@@ -106,8 +105,24 @@ def roll_ability():
     for p in profs:
         char.add_proficiency(p)
 
-    skill = request.form.get('ability')
-    roll = char.roll_skill(skill)
+    ability = request.form.get('ability')
+    roll = char.roll_skill(ability)
+
+    return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)
+
+
+@app.route('/roll-initiative', methods=['POST'])
+def roll_initiative():
+    stats = session.get('stats')
+    profs = session.get('proficiencies')
+
+    # save character and load again
+    char = dict_to_character(stats)
+    for p in profs:
+        char.add_proficiency(p)
+
+    initiative = request.form.get('initiative')
+    roll = char.roll_skill(initiative)
 
     return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)
 
