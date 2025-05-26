@@ -80,8 +80,8 @@ def set_stats():
     return render_template('set_stats.html', character=char, skills=all_skills, saving_throws=saving_throws, roll=None)
 
 
-@app.route('/set-stats-rolled', methods=['POST'])
-def set_stats_rolled():
+@app.route('/roll-skill', methods=['POST'])
+def roll_skill():
     stats = session.get('stats')
     profs = session.get('proficiencies')
 
@@ -91,6 +91,22 @@ def set_stats_rolled():
         char.add_proficiency(p)
 
     skill = request.form.get('skill')
+    roll = char.roll_skill(skill)
+
+    return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)
+
+
+@app.route('/roll-ability', methods=['POST'])
+def roll_ability():
+    stats = session.get('stats')
+    profs = session.get('proficiencies')
+
+    # save character and load again
+    char = dict_to_character(stats)
+    for p in profs:
+        char.add_proficiency(p)
+
+    skill = request.form.get('ability')
     roll = char.roll_skill(skill)
 
     return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)

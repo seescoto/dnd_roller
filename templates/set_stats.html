@@ -2,13 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Home</title>
+		<title>Roll!</title>
 		<!-- Link to your CSS file -->
 		<link
 			rel="stylesheet"
 			href="{{ url_for('static', filename='styles.css') }}"
 		/>
 	</head>
+
+	<a href="/">Reset Stats</a>
 
 	<div class="column2">
 		<ul>
@@ -45,16 +47,6 @@
 	</div>
 
 	<div class="column2">
-		<br />
-		{%if roll != None%} {%if roll[0] == 1 or roll[0] == 20%}
-		<p>NATURAL {{roll[0]}}!</p>
-		{%endif%}
-		<p>{{roll[0]}} + modifiers = {{roll[1]}}</p>
-		{%endif%}
-	</div>
-	<br />
-
-	<div class="column2">
 		<p>Skills:</p>
 		<ul id="skill_list">
 			{% for skill in skills %}
@@ -63,11 +55,7 @@
 				{%endif%}
 
 				<!-- button to roll skill-->
-				<form
-					method="post"
-					action="/set-stats-rolled"
-					style="display: inline"
-				>
+				<form method="post" action="/roll-skill" style="display: inline">
 					<input type="hidden" name="skill" value="{{ skill }}" />
 					<button>Roll {{skill}}</button>
 					<span class="roll-result"></span>
@@ -84,11 +72,7 @@
 			<li>
 				{{saving_throw}} {%if saving_throw in character.proficiencies%}
 				&check; {%endif%}
-				<form
-					method="post"
-					action="/set-stats-rolled"
-					style="display: inline"
-				>
+				<form method="post" action="/roll-skill" style="display: inline">
 					<input type="hidden" name="skill" value="{{ saving_throw }}" />
 					<button>Roll {{saving_throw}} saving throw</button>
 					<span class="roll-result"></span>
@@ -98,7 +82,19 @@
 		</ul>
 	</div>
 
+	<!--where rolls show up-->
+	<div class="column2">
+		<br />
+		{%if roll != None%} {%if roll[0] == 1 or roll[0] == 20%}
+		<p>NATURAL {{roll[0]}}!</p>
+		{%endif%}
+		<p>Total roll: {{roll[1]}}</p>
+		{%endif%}
+	</div>
+	<br />
+	<br />
+
 	<footer>
-		<p>&copy; Sofia Escoto 2025</p>
+		<p>Sofia Escoto 2025 &copy;</p>
 	</footer>
 </html>

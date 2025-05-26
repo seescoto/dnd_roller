@@ -104,6 +104,25 @@ class Character:
         roll = roll_d20()
         return (roll, roll+bonus)
 
+    def roll_ability(self, ability: str) -> tuple[int]:
+        if ability == "strength":
+            bonus = self.strength.modifier
+        elif ability == "dexterity":
+            bonus = self.dexterity.modifier
+        elif ability == "constitution":
+            bonus = self.constitution.modifier
+        elif ability == "intelligence":
+            bonus = self.intelligence.modifier
+        elif ability == "wisdom":
+            bonus = self.wisdom.modifier
+        elif ability == "charisma":
+            bonus = self.charisma.modifier
+        else:
+            bonus = 0  # Default case
+
+        roll = roll_d20()
+        return (roll, roll + bonus)
+
 
 def character_to_dict(char: Character) -> dict[str, int]:
     d = {}
