@@ -28,7 +28,7 @@ h4 {
 .column2 {
 	flex: 1; /* Each column takes up equal space */
 	float: left;
-	width: 33%;
+	width: 50%;
 }
 
 /* Style the navbar container */

@@ -74,19 +74,23 @@ class Character:
         self.proficiencies.append(skill)
 
     def roll_skill(self, skill: str) -> tuple[int]:
-        str_skills = ['Athletics']
-        dex_skills = ['Acrobatics', 'Sleight of Hand', 'Stealth']
+        str_skills = ['Athletics', 'Strength']
+        dex_skills = ['Acrobatics', 'Sleight of Hand', 'Stealth', 'Dexterity']
+        con_skills = ['Constitution']
         int_skills = ['Arcana', 'History',
-                      'Investigation', 'Nature', 'Religion']
+                      'Investigation', 'Nature', 'Religion', 'Intelligence']
         wis_skills = ['Animal Handling', 'Insight',
-                      'Medicine', 'Perception', 'Survival']
-        cha_skills = ['Deception', 'Intimidation', 'Performance', 'Persuasion']
+                      'Medicine', 'Perception', 'Survival', 'Wisdom']
+        cha_skills = ['Deception', 'Intimidation',
+                      'Performance', 'Persuasion', 'Charisma']
 
         bonus = 0
         if skill in str_skills:
             bonus = self.strength.modifier
         elif skill in dex_skills:
             bonus = self.dexterity.modifier
+        elif skill in con_skills:
+            bonus = self.constitution.modifier
         elif skill in int_skills:
             bonus = self.intelligence.modifier
         elif skill in wis_skills:
@@ -97,5 +101,30 @@ class Character:
         if skill in self.proficiencies:
             bonus += self.proficiency_bonus
 
-        roll = roll_d20
+        roll = roll_d20()
         return (roll, roll+bonus)
+
+
+def character_to_dict(char: Character) -> dict[str, int]:
+    d = {}
+    d["strength"] = char.strength.score
+    d["dexterity"] = char.dexterity.score
+    d["constitution"] = char.constitution.score
+    d["intelligence"] = char.intelligence.score
+    d["wisdom"] = char.wisdom.score
+    d["charisma"] = char.charisma.score
+
+    d["proficiency_bonus"] = char.proficiency_bonus
+    d["initiative_bonus"] = char.initiative_bonus
+
+    return d
+
+
+def dict_to_character(d: dict[str, int]) -> Character:
+    char = Character()
+    char.set_attributes(d["strength"], d["dexterity"], d["constitution"],
+                        d["intelligence"], d["wisdom"], d["charisma"])
+    char.set_proficiency_bonus(d["proficiency_bonus"])
+    char.set_initiative_bonus(d["initiative_bonus"])
+
+    return char
