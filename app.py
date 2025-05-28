@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, session
 from src.Character import Character, character_to_dict, dict_to_character
+from src.Rolls import roll_custom
 from config import secret_key
 
 # run with 'flask --app FILENAME run'
@@ -123,6 +124,22 @@ def roll_initiative():
 
     initiative = request.form.get('initiative')
     roll = char.roll_skill(initiative)
+
+    return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)
+
+
+@app.route('/roll-custom-dice', methods=['POST'])
+def roll_custom_dice():
+    stats = session.get('stats')
+    profs = session.get('proficiencies')
+
+    # save char and load again
+    char = dict_to_character(stats)
+    for p in profs:
+        char.add_proficiency(p)
+
+    custom = request.form.get('custom')
+    roll = roll_custom(custom)
 
     return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)
 
