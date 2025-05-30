@@ -142,6 +142,14 @@ class Character:
         return bonus
 
 
+def create_character(stats: dict[str, int], proficiencies: list[str]) -> Character:
+    char = dict_to_character(stats)
+    for prof in proficiencies:
+        char.add_proficiency(prof)
+
+    return char
+
+
 def character_to_dict(char: Character) -> dict[str, int]:
     d = {}
     d["strength"] = char.strength.score

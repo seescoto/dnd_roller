@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, session
-from src.Character import Character, character_to_dict, dict_to_character
+from src.Character import Character, character_to_dict, create_character
 from src.Rolls import roll_custom
 from config import secret_key
 
@@ -86,9 +86,7 @@ def roll_skill():
     profs = session.get('proficiencies')
 
     # save character and load again
-    char = dict_to_character(stats)
-    for p in profs:
-        char.add_proficiency(p)
+    char = create_character(stats, profs)
 
     skill = request.form.get('skill')
     roll = char.roll_skill(skill)
@@ -102,9 +100,7 @@ def roll_ability():
     profs = session.get('proficiencies')
 
     # save character and load again
-    char = dict_to_character(stats)
-    for p in profs:
-        char.add_proficiency(p)
+    char = create_character(stats, profs)
 
     ability = request.form.get('ability')
     roll = char.roll_skill(ability)
@@ -118,9 +114,7 @@ def roll_initiative():
     profs = session.get('proficiencies')
 
     # save character and load again
-    char = dict_to_character(stats)
-    for p in profs:
-        char.add_proficiency(p)
+    char = create_character(stats, profs)
 
     initiative = request.form.get('initiative')
     roll = char.roll_skill(initiative)
@@ -134,9 +128,7 @@ def roll_custom_dice():
     profs = session.get('proficiencies')
 
     # save char and load again
-    char = dict_to_character(stats)
-    for p in profs:
-        char.add_proficiency(p)
+    char = create_character(stats, profs)
 
     custom = request.form.get('custom')
     roll = roll_custom(custom)
