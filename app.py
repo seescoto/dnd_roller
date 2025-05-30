@@ -103,7 +103,7 @@ def roll_ability():
     char = create_character(stats, profs)
 
     ability = request.form.get('ability')
-    roll = char.roll_skill(ability)
+    roll = char.roll_ability(ability)
 
     return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)
 
@@ -116,8 +116,7 @@ def roll_initiative():
     # save character and load again
     char = create_character(stats, profs)
 
-    initiative = request.form.get('initiative')
-    roll = char.roll_skill(initiative)
+    roll = char.roll_initiative()
 
     return render_template('set_stats.html', character=char, skills=session.get('all_skills'), saving_throws=session.get('saving_throws'), roll=roll)
 

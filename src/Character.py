@@ -123,6 +123,10 @@ class Character:
         roll = roll_d20()
         return (roll, roll + bonus)
 
+    def roll_initiative(self):
+        roll = roll_d20()
+        return (roll, roll + self.initiative_bonus)
+
     def get_ability_score(self, ability: str) -> int:
         if ability == "Strength":
             bonus = self.strength.score

@@ -1,5 +1,3 @@
-from src.Rolls import roll_d20
-
 
 class CharAttribute:
 
